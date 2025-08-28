@@ -12,4 +12,6 @@ export default {
   jwt_refresh_expires: process.env.JWT_REFRESH_TOKEN_EXPIRES,
   default_admin_email: process.env.DEFAULT_ADMIN_EMAIL,
   default_admin_password: process.env.DEFAULT_ADMIN_PASSWORD,
+  NODE_ENV: process.env.NODE_ENV,
+  bcrypt_salt: process.env.BCRYPT_SALT,
 };
