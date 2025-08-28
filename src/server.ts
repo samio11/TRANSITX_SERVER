@@ -2,6 +2,8 @@ import { Server } from "http";
 import mongoose from "mongoose";
 import config from "./app/config";
 import app from "./app";
+import { redisConnection } from "./app/config/redis.config";
+import { sendEmail } from "./app/utils/sendEmail";
 
 let server: Server;
 
@@ -18,6 +20,14 @@ async function startServer() {
 
 (async () => {
   await startServer();
+  await redisConnection();
+
+  await sendEmail({
+    to: "samiohasan6@gmail.com",
+    subject: "Welcome to Transitx 🎉",
+    tempName: "welcome",
+    tempData: { email: "samiohasan6@gmail.com" },
+  });
 })();
 
 process.on("unhandledRejection", (err) => {
