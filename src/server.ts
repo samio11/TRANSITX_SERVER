@@ -21,13 +21,6 @@ async function startServer() {
 (async () => {
   await startServer();
   await redisConnection();
-
-  await sendEmail({
-    to: "samiohasan6@gmail.com",
-    subject: "Welcome to Transitx 🎉",
-    tempName: "welcome",
-    tempData: { email: "samiohasan6@gmail.com" },
-  });
 })();
 
 process.on("unhandledRejection", (err) => {

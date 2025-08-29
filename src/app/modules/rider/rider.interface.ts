@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 
 export interface IRider {
-  _id: string;
+  _id?: string;
   userId: Types.ObjectId;
   emergencyContact?: IEmergencyContact;
   totalRides: number;

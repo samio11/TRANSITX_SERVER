@@ -1,4 +1,5 @@
 import { Types } from "mongoose";
+import { TPaymentStatus } from "../payment/payment.interface";
 
 export enum IRideStatus {
   requested = "requested",
@@ -10,53 +11,22 @@ export enum IRideStatus {
 }
 
 export interface IRide {
-  _id: string;
+  _id?: string;
   riderId: Types.ObjectId;
   driverId?: Types.ObjectId;
   pickupLocation: ILocation;
   destination: ILocation;
-  status:
-    | "requested"
-    | "accepted"
-    | "driver_arrived"
-    | "in_progress"
-    | "completed"
-    | "cancelled";
-  requestedAt: Date;
-  acceptedAt?: Date;
-  driverArrivedAt?: Date;
-  pickedUpAt?: Date;
-  completedAt?: Date;
-  cancelledAt?: Date;
-  cancelledBy?: "rider" | "driver" | "system";
+  status: IRideStatus;
   estimatedFare: number;
   actualFare?: number;
-  distance: number; // in kilometers
-  duration: number; // in minutes
-  paymentMethod: string;
+  distance: number;
+  duration: number;
+  paymentStatus: TPaymentStatus;
   isPaid: boolean;
-  riderRating?: number;
   driverRating?: number;
-  route?: ILocation[];
-  surgeMultiplier?: number;
 }
 
 export interface ILocation {
   lat: number;
   lng: number;
-  address?: string;
-}
-
-export interface IRideRequest {
-  riderId: string;
-  pickupLocation: ILocation;
-  destination: ILocation;
-  paymentMethod: string;
-}
-
-export interface IRideEstimate {
-  distance: number;
-  duration: number;
-  fare: number;
-  surgeMultiplier?: number;
 }

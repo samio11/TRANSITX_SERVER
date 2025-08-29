@@ -16,7 +16,6 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const config_1 = __importDefault(require("./app/config"));
 const app_1 = __importDefault(require("./app"));
 const redis_config_1 = require("./app/config/redis.config");
-const sendEmail_1 = require("./app/utils/sendEmail");
 let server;
 function startServer() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -34,12 +33,6 @@ function startServer() {
 (() => __awaiter(void 0, void 0, void 0, function* () {
     yield startServer();
     yield (0, redis_config_1.redisConnection)();
-    yield (0, sendEmail_1.sendEmail)({
-        to: "samiohasan6@gmail.com",
-        subject: "Welcome to Transitx 🎉",
-        tempName: "welcome",
-        tempData: { email: "samiohasan6@gmail.com" },
-    });
 }))();
 process.on("unhandledRejection", (err) => {
     console.log(`UnHandled Rejection:- ${err}`);

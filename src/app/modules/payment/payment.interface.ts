@@ -6,7 +6,7 @@ export enum TPaymentStatus {
 }
 
 export interface IPayment {
-  _id: string;
+  _id?: string;
   rideId: Types.ObjectId;
   riderId: Types.ObjectId;
   driverId: Types.ObjectId;

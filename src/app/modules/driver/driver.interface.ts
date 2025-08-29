@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 
 export interface IDriver {
-  _id: string;
+  _id?: string;
   userId: Types.ObjectId;
   vehicle: IVehicle;
   licenseNumber: string;
@@ -13,6 +13,12 @@ export interface IDriver {
   approved: boolean;
 }
 
+export enum EVehicle {
+  car = "car",
+  bike = "bike",
+  suv = "suv",
+}
+
 export interface IVehicle {
   make: string;
   model: string;
@@ -20,5 +26,5 @@ export interface IVehicle {
   color: string;
   licensePlate: string;
   capacity: number;
-  vehicleType: "car" | "bike" | "suv";
+  vehicleType: EVehicle;
 }
